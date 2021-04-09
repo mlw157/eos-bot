@@ -22,7 +22,7 @@ namespace eos_bot
         {
           
 
-            string connStr = "server=localhost;user=root;database=servers;port=3306;password=password";
+            string connStr = ""; //add your database containing the servers here, use server_info.mysql
 
             MySqlConnection conn = new MySqlConnection(connStr);
 

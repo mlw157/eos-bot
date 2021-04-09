@@ -1,0 +1,747 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sharer</name>
+    </assembly>
+    <members>
+        <member name="T:Sharer.Command.SharerCallFunctionStatus">
+            <summary>
+            Status of the remote call
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerCallFunctionStatus.NotYetCalled">
+            <summary>
+            The function has not been yet called
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerCallFunctionStatus.OK">
+            <summary>
+            The function has been successfully camled
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerCallFunctionStatus.FunctionIdOutOfRange">
+            <summary>
+            The id of the function is out of the range of function array on Arduino
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerCallFunctionStatus.UnknownType">
+            <summary>
+            Returned type ou argument type is unknown, please check version of Sharer
+            </summary>
+        </member>
+        <member name="T:Sharer.Command.SharerFunctionReturn`1">
+            <summary>
+            Status of the function call
+            </summary>
+            <typeparam name="ReturnType">Expected .NET type returned by the function</typeparam>
+        </member>
+        <member name="F:Sharer.Command.SharerFunctionReturn`1.Status">
+            <summary>
+            Status of the success of  function call
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerFunctionReturn`1.Type">
+            <summary>
+            Type of the returned value
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerFunctionReturn`1.Value">
+            <summary>
+            Returned value converted in .NET type
+            </summary>
+        </member>
+        <member name="M:Sharer.Command.SharerFunctionReturn`1.ToString">
+            <summary>
+            A human readable string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sharer.Command.SharerCallFunctionCommand`1">
+            <summary>
+            Command that allow to encode and decode a function call
+            </summary>
+            <typeparam name="ReturnType">Expected .NET type returned by the function</typeparam>
+        </member>
+        <member name="T:Sharer.Command.SharerGetAllFunctionsPrototypeCommand">
+            <summary>
+            Command that allows to encode and decode the list of all function shared
+            </summary>
+        </member>
+        <member name="T:Sharer.Command.SharerGetAllVariablesDefinitionCommand">
+            <summary>
+            Command that allows to encode and decode the list of all variables shared
+            </summary>
+        </member>
+        <member name="T:Sharer.Command.SharerGetAllVariablesDefinitionCommand.Steps">
+            <summary>
+            internal state machine for decoding the list
+            </summary>
+        </member>
+        <member name="T:Sharer.Command.SharerGetInfosCommand">
+            <summary>
+            Information about the board. This command is also sent at startup
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerGetInfosCommand.MajorVersion">
+            <summary>
+            Arduino Sharer library major version
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerGetInfosCommand.MinorVersion">
+            <summary>
+            Arduino Sharer library minor version
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerGetInfosCommand.FixVersion">
+            <summary>
+            Arduino Sharer library fix version
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerGetInfosCommand.Board">
+            <summary>
+            Arduino board name
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerGetInfosCommand.CPUFrequency">
+            <summary>
+            Arduino CPU frequency in Hz
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerGetInfosCommand.CPlusPlusVersion">
+            <summary>
+            C++ version used to compile the Arduino sketch
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerGetInfosCommand.GCCVersion">
+            <summary>
+            GCC compiler version used to compile the Arduino sketch
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerGetInfosCommand.FunctionCount">
+            <summary>
+            Number of functions exposed by Sharer
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerGetInfosCommand.FunctionMaxCount">
+            <summary>
+            Maximum number of function that Sharer can share (see SharerConfig.h)
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerGetInfosCommand.VariableCount">
+            <summary>
+            Number of variables exposed by Sharer
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerGetInfosCommand.VariableMaxCount">
+            <summary>
+            Maximum number of variable that Sharer can share (see SharerConfig.h)
+            </summary>
+        </member>
+        <member name="M:Sharer.Command.SharerGetInfosCommand.ToString">
+            <summary>
+            A human readable string
+            </summary>
+        </member>
+        <member name="T:Sharer.Command.SharerReadVariableStatus">
+            <summary>
+            Status of the reading
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerReadVariableStatus.NotYedRead">
+            <summary>
+            The variable has not been yet read
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerReadVariableStatus.OK">
+            <summary>
+            The variable has been successfully read
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerReadVariableStatus.VariableIdOutOfRange">
+            <summary>
+            Id of the variable is out of range of the Arduino variable array
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerReadVariableStatus.UnknownType">
+            <summary>
+            Variable type is unknown by the board, please check Sharer version
+            </summary>
+        </member>
+        <member name="T:Sharer.Command.SharerReadVariableReturn">
+            <summary>
+            Variable value and status of the reading
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerReadVariableReturn.Status">
+            <summary>
+            Status of the reading
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerReadVariableReturn.Value">
+            <summary>
+            Value of the variable
+            </summary>
+        </member>
+        <member name="M:Sharer.Command.SharerReadVariableReturn.ToString">
+            <summary>
+            A human readable string
+            </summary>
+        </member>
+        <member name="T:Sharer.Command.SharerReadVariablesCommand">
+            <summary>
+            Sharer command that encode/decode the reading of a variable
+            </summary>
+        </member>
+        <member name="T:Sharer.Command.SharerWriteVariableStatus">
+            <summary>
+            Status of the variable writting
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerWriteVariableStatus.NotYetWritten">
+            <summary>
+            The variable has not been yet written
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerWriteVariableStatus.OK">
+            <summary>
+            The variable has successfullt been written
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerWriteVariableStatus.VariableIdOutOfRange">
+            <summary>
+            Id of the variable is out of range of the Arduino variable array
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerWriteVariableStatus.UnknownType">
+            <summary>
+            Variable type is unknown by the board, please check Sharer version
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerWriteVariableStatus.NotFound">
+            <summary>
+            The variable to write has not been found in variable list
+            </summary>
+        </member>
+        <member name="T:Sharer.Command.SharerWriteVariableReturn">
+            <summary>
+            Status of the variable writting
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerWriteVariableReturn.Status">
+            <summary>
+            Status of the writting
+            </summary>
+        </member>
+        <member name="F:Sharer.Command.SharerWriteVariableReturn.Value">
+            <summary>
+            Value written
+            </summary>
+        </member>
+        <member name="M:Sharer.Command.SharerWriteVariableReturn.ToString">
+            <summary>
+            A human readable string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sharer.Command.SharerWriteValue">
+            <summary>
+            Variable to write
+            </summary>
+        </member>
+        <member name="P:Sharer.Command.SharerWriteValue.Name">
+            <summary>
+            Name of the variable to write
+            </summary>
+        </member>
+        <member name="P:Sharer.Command.SharerWriteValue.Value">
+            <summary>
+            Value of the variable to write
+            </summary>
+        </member>
+        <member name="P:Sharer.Command.SharerWriteValue.Status">
+            <summary>
+            Status of the writting
+            </summary>
+        </member>
+        <member name="M:Sharer.Command.SharerWriteValue.#ctor(System.String,System.Object)">
+            <summary>
+            Create a command to write a variable on Arduino
+            </summary>
+            <param name="name">Name of the variable to write</param>
+            <param name="value">Value to write</param>
+        </member>
+        <member name="M:Sharer.Command.SharerWriteValue.#ctor(Sharer.Variables.SharerVariable,System.Object)">
+            <summary>
+            Create a command to write a variable on Arduino
+            </summary>
+            <param name="variable">Variable to write</param>
+            <param name="value">Value to write</param>
+        </member>
+        <member name="T:Sharer.Command.SharerCommandID">
+            <summary>
+            List of all commands available in Sharer
+            </summary>
+        </member>
+        <member name="T:Sharer.Command.SharerSentCommand">
+            <summary>
+            Abstract class to describe a Sharer command, encode and decode it
+            </summary>
+        </member>
+        <member name="P:Sharer.Command.SharerSentCommand.Exception">
+            <summary>
+            Internal exception thrown during command execution
+            </summary>
+        </member>
+        <member name="M:Sharer.Command.SharerSentCommand.WaitAnswer(System.TimeSpan)">
+            <summary>
+            Wait command to finish call and answer
+            </summary>
+            <param name="timeout">Maximum blocking time</param>
+            <returns>True if success</returns>
+        </member>
+        <member name="T:Sharer.FunctionCall.SharerFunction">
+            <summary>
+            Description of a function shared with Sharer
+            </summary>
+        </member>
+        <member name="F:Sharer.FunctionCall.SharerFunction.Name">
+            <summary>
+            Function name
+            </summary>
+        </member>
+        <member name="F:Sharer.FunctionCall.SharerFunction.Arguments">
+            <summary>
+            Arguments of the function
+            </summary>
+        </member>
+        <member name="F:Sharer.FunctionCall.SharerFunction.ReturnType">
+            <summary>
+            Return type of the function
+            </summary>
+        </member>
+        <member name="M:Sharer.FunctionCall.SharerFunction.ToString">
+            <summary>
+            Human readable string
+            </summary>
+        </member>
+        <member name="P:Sharer.FunctionCall.SharerFunction.Prototype">
+            <summary>
+            Get the prototype of the function. For example: int myFunction(int arg1, bool arg2)
+            </summary>
+        </member>
+        <member name="T:Sharer.FunctionCall.SharerFunctionArgument">
+            <summary>
+            Description of a shared function argument
+            </summary>
+        </member>
+        <member name="F:Sharer.FunctionCall.SharerFunctionArgument.Name">
+            <summary>
+            Argument name
+            </summary>
+        </member>
+        <member name="F:Sharer.FunctionCall.SharerFunctionArgument.Type">
+            <summary>
+            Argument type
+            </summary>
+        </member>
+        <member name="T:Sharer.FunctionCall.SharerType">
+            <summary>
+            List of all types supported by Sharer for variables and function argument and return
+            </summary>
+        </member>
+        <member name="F:Sharer.FunctionCall.SharerType.void">
+            <summary>
+            No type returned
+            </summary>
+        </member>
+        <member name="F:Sharer.FunctionCall.SharerType.bool">
+            <summary>
+            Boolean encoded in a byte (0x00=false, else true)
+            </summary>
+        </member>
+        <member name="F:Sharer.FunctionCall.SharerType.byte">
+            <summary>
+            Unsigned 8 bits integer
+            </summary>
+        </member>
+        <member name="F:Sharer.FunctionCall.SharerType.short">
+            <summary>
+            Signed 8 bits integer
+            </summary>
+        </member>
+        <member name="F:Sharer.FunctionCall.SharerType.int">
+            <summary>
+            Signed 16 bits integer
+            </summary>
+        </member>
+        <member name="F:Sharer.FunctionCall.SharerType.uint">
+            <summary>
+            Unsigned 16 bits integer
+            </summary>
+        </member>
+        <member name="F:Sharer.FunctionCall.SharerType.long">
+            <summary>
+            Signed 32 bits integer
+            </summary>
+        </member>
+        <member name="F:Sharer.FunctionCall.SharerType.ulong">
+            <summary>
+            Unsigned 32 bits integer
+            </summary>
+        </member>
+        <member name="F:Sharer.FunctionCall.SharerType.int64">
+            <summary>
+            Signed 64 bits integer
+            </summary>
+        </member>
+        <member name="F:Sharer.FunctionCall.SharerType.uint64">
+            <summary>
+            unsigned 64 bits integer
+            </summary>
+        </member>
+        <member name="F:Sharer.FunctionCall.SharerType.float">
+            <summary>
+            32 bits float
+            </summary>
+        </member>
+        <member name="F:Sharer.FunctionCall.SharerType.double">
+            <summary>
+            64 bits float
+            </summary>
+        </member>
+        <member name="T:Sharer.FunctionCall.SharerTypeHelper">
+            <summary>
+            Static function to hel data manipulation
+            </summary>
+        </member>
+        <member name="T:Sharer.SharerConnection">
+            <summary>
+            Sharer connection to an Arduino Board. Sharer offers features to remote call function and read/write variables on Arduino from a .NET assembly.
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.GetSerialPortNames">
+            <summary>
+            Static function that returns the list of all available COM port
+            </summary>
+            <returns>A string array that contains all serial COM port name you can use in SharerConnection constructor</returns>
+        </member>
+        <member name="E:Sharer.SharerConnection.UserDataReceived">
+            <summary>
+            Event raised when user message are received (i.e. Sharer.write(...) or Sharer.print(...) or Sharer.println(...) is called in arduino code)
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.#ctor(System.String,System.Int32,System.IO.Ports.Parity,System.Int32,System.IO.Ports.StopBits,System.IO.Ports.Handshake)">
+            <summary>
+            Create a new Sharer connection. You should then call Connect() open COM Port
+            </summary>
+            <param name="portName">Name of the Arduino COM port (example "COM5")</param>
+            <param name="baudRate">Serial communication baud rate. Should be the same in Arduino code Sharer.init(baudRate). Example : 300, 600, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 31250, 38400, 57600, or 115200</param>
+            <param name="parity">Optional: bit parity (default: Parity.None)</param>
+            <param name="dataBit">Optional: Number of bits per byte (default: 8)</param>
+            <param name="stopBits">Optional: The serial stop bit (default: StopBits.One)</param>
+            <param name="handShake">Optional: Hand Shake of the serial communication (default: Handshake.None)</param>
+        </member>
+        <member name="M:Sharer.SharerConnection.Connect(System.Int32,System.Boolean)">
+            <summary>
+            Connect to Arduino board
+            </summary>
+            <param name="waitSharerAvailableTimeout">Optional: Maximum time in milliseconds to initiate a communication with the sharer library that runs on Arduino (0 not to wait for Sharer to answer)</param>
+            <param name="refreshLists">Optional: Indicates if the variables and function lists should be refreshed</param>
+        </member>
+        <member name="M:Sharer.SharerConnection.Disconnect">
+            <summary>
+            Disconnect Sharer and close serial communication
+            </summary>
+        </member>
+        <member name="P:Sharer.SharerConnection.Connected">
+            <summary>
+            Indicates if the serial communication is opened
+            </summary>
+        </member>
+        <member name="F:Sharer.SharerConnection.Functions">
+            <summary>
+            List of shared functions. This list is refresh after a call to RefreshFunctions() or Connect()
+            </summary>
+        </member>
+        <member name="F:Sharer.SharerConnection.Variables">
+            <summary>
+            List of shared variables. This list is refresh after a call to RefreshVariables() or Connect()
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.RefreshFunctions">
+            <summary>
+            Refresh functions shared
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.RefreshVariables">
+            <summary>
+            Refresh variables shared
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.ReadVariables(System.Collections.Generic.IEnumerable{Sharer.Variables.SharerVariable})">
+            <summary>
+            Read simultaneously several variables in Arduino
+            </summary>
+            <param name="variables">Variable to read. Peek them in Variables field</param>
+            <returns>Variable values and read status</returns>
+        </member>
+        <member name="M:Sharer.SharerConnection.ReadVariable(System.String)">
+            <summary>
+            Read a variable by its name
+            </summary>
+            <param name="name">Name of the variable to read</param>
+            <returns>Variable value and read status</returns>
+        </member>
+        <member name="M:Sharer.SharerConnection.ReadVariables(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Read simultaneously several variables in Arduino
+            </summary>
+            <param name="names">Names of variable to read</param>
+            <returns>Variable values and read status</returns>
+        </member>
+        <member name="M:Sharer.SharerConnection.WriteVariable(Sharer.Command.SharerWriteValue)">
+            <summary>
+            Write an Arduino variable
+            </summary>
+            <param name="value">Value to write</param>
+            <returns>True if all variable has been succesfully written</returns>
+        </member>
+        <member name="M:Sharer.SharerConnection.WriteVariable(System.String,System.Object)">
+            <summary>
+            Write an Arduino variable
+            </summary>
+            <param name="name">Variable name to write</param>
+            <param name="value">New value to write</param>
+            <returns>True if all variable has been succesfully written</returns>
+        </member>
+        <member name="M:Sharer.SharerConnection.WriteVariables(System.Collections.Generic.IEnumerable{Sharer.Command.SharerWriteValue})">
+            <summary>
+            Write variables on Arduino
+            </summary>
+            <param name="values">List of values to simultaneously write</param>
+            <returns>True if all variable has been succesfully written</returns>
+        </member>
+        <member name="M:Sharer.SharerConnection.Call``1(System.String,System.TimeSpan,System.Object[])">
+            <summary>
+            Remote call a function by its name with arguments and get the returned value
+            </summary>
+            <typeparam name="ReturnType">The .NET type expected. Should be the same as the Arduino function return type</typeparam>
+            <param name="functionName">Name of the function to call</param>
+            <param name="timeout">Maximum expected duration of the function execution on Arduino</param>
+            <param name="arguments">Optional list of argument values.</param>
+            <returns>Status of the function call with its returned value</returns>
+        </member>
+        <member name="M:Sharer.SharerConnection.Call``1(System.String,System.Object[])">
+            <summary>
+            Send a custom user message to Arduino. The message can be read in Arduino code with Sharer.read()
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.Call(System.String,System.TimeSpan,System.Object[])">
+            <summary>
+            Send a custom user message to Arduino. The message can be read in Arduino code with Sharer.read()
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.Call(System.String,System.Object[])">
+            <summary>
+            Send a custom user message to Arduino. The message can be read in Arduino code with Sharer.read()
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.GetInfos">
+            <summary>
+            Send a custom user message to Arduino. The message can be read in Arduino code with Sharer.read()
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.WriteUserData(System.Char[],System.Int32,System.Int32)">
+            <summary>
+            Send a custom user message to Arduino. The message can be read in Arduino code with Sharer.read()
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.WriteUserData(System.String)">
+            <summary>
+            Send a custom user message to Arduino. The message can be read in Arduino code with Sharer.read()
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.WriteUserData(System.Single)">
+            <summary>
+            Send a custom user message to Arduino. The message can be read in Arduino code with Sharer.read()
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.WriteUserData(System.UInt64)">
+            <summary>
+            Send a custom user message to Arduino. The message can be read in Arduino code with Sharer.read()
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.WriteUserData(System.Int64)">
+            <summary>
+            Send a custom user message to Arduino. The message can be read in Arduino code with Sharer.read()
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.WriteUserData(System.UInt32)">
+            <summary>
+            Send a custom user message to Arduino. The message can be read in Arduino code with Sharer.read()
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.WriteUserData(System.Int32)">
+            <summary>
+            Send a custom user message to Arduino. The message can be read in Arduino code with Sharer.read()
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.WriteUserData(System.UInt16)">
+            <summary>
+            Send a custom user message to Arduino. The message can be read in Arduino code with Sharer.read()
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.WriteUserData(System.Int16)">
+            <summary>
+            Send a custom user message to Arduino. The message can be read in Arduino code with Sharer.read()
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.WriteUserData(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Send a custom user message to Arduino. The message can be read in Arduino code with Sharer.read()
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.WriteUserData(System.Double)">
+            <summary>
+            Send a custom user message to Arduino. The message can be read in Arduino code with Sharer.read()
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.WriteUserData(System.Char[])">
+            <summary>
+            Send a custom user message to Arduino. The message can be read in Arduino code with Sharer.read()
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.WriteUserData(System.Char)">
+            <summary>
+            Send a custom user message to Arduino. The message can be read in Arduino code with Sharer.read()
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.WriteUserData(System.Byte[])">
+            <summary>
+            Send a custom user message to Arduino. The message can be read in Arduino code with Sharer.read()
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.WriteUserData(System.SByte)">
+            <summary>
+            Send a custom user message to Arduino. The message can be read in Arduino code with Sharer.read()
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.WriteUserData(System.Byte)">
+            <summary>
+            Send a custom user message to Arduino. The message can be read in Arduino code with Sharer.read()
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.WriteUserData(System.Boolean)">
+            <summary>
+            Send a custom user message to Arduino. The message can be read in Arduino code with Sharer.read()
+            </summary>
+        </member>
+        <member name="F:Sharer.SharerConnection.SHARER_START_COMMAND_CHAR">
+            <summary>
+            Every sharer commands starts with this byte
+            </summary>
+        </member>
+        <member name="F:Sharer.SharerConnection.DEFAULT_TIMEOUT">
+            <summary>
+            Default timeout for Sharer commands
+            </summary>
+        </member>
+        <member name="F:Sharer.SharerConnection._serialPort">
+            <summary>
+            The serial port object
+            </summary>
+        </member>
+        <member name="T:Sharer.SharerConnection.ReceiveSteps">
+            <summary>
+            internal states of the state machine
+            </summary>
+        </member>
+        <member name="F:Sharer.SharerConnection._receiveStep">
+            <summary>
+            Current state
+            </summary>
+        </member>
+        <member name="F:Sharer.SharerConnection._userData">
+            <summary>
+            User message bytes received
+            </summary>
+        </member>
+        <member name="F:Sharer.SharerConnection._lastDeviceMessageId">
+            <summary>
+            Last received message id
+            </summary>
+        </member>
+        <member name="F:Sharer.SharerConnection._lastCommandID">
+            <summary>
+            Last command received
+            </summary>
+        </member>
+        <member name="F:Sharer.SharerConnection._currentCommand">
+            <summary>
+            The sent command associated to the last received answer
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.serialPort_DataReceived(System.Object,System.IO.Ports.SerialDataReceivedEventArgs)">
+            <summary>
+            Event handler called when serial data are received
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.ParseReceivedData(System.Byte)">
+            <summary>
+            Parse received bytes one by one to make the internal state machine progress and fill the user message buffer
+            </summary>
+            <param name="b">The last byte received</param>
+        </member>
+        <member name="M:Sharer.SharerConnection._currentCommand_Timeouted(System.Object,System.EventArgs)">
+            <summary>
+            Handler called when the current command has timeouted. Allow to reset and unlock the state machine
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.AssertConnected">
+            <summary>
+            Throw an exception if the connection is closed
+            </summary>
+        </member>
+        <member name="M:Sharer.SharerConnection.sendCommand(Sharer.Command.SharerSentCommand)">
+            <summary>
+            Convert a command to a byte array and send it on serial port
+            </summary>
+            <param name="cmd">The command to send</param>
+        </member>
+        <member name="T:Sharer.UserData.UserDataReceivedEventArgs">
+            <summary>
+            Describes a received custom user message
+            </summary>
+        </member>
+        <member name="P:Sharer.UserData.UserDataReceivedEventArgs.Data">
+            <summary>
+            Received raw byte data
+            </summary>
+        </member>
+        <member name="M:Sharer.UserData.UserDataReceivedEventArgs.GetReader">
+            <summary>
+            Returns a reader to facilitate data decoding (string, int, double, ...)
+            </summary>
+        </member>
+        <member name="T:Sharer.UserData.UserDataReceivedEventArgs.InternalBinaryReader">
+            <summary>
+            A custom reader to properly read strings
+            </summary>
+        </member>
+        <member name="T:Sharer.Variables.SharerVariable">
+            <summary>
+            Describes a Shared variable that can be read and written by Sharer
+            </summary>
+        </member>
+        <member name="F:Sharer.Variables.SharerVariable.Name">
+            <summary>
+            Variable name
+            </summary>
+        </member>
+        <member name="F:Sharer.Variables.SharerVariable.Type">
+            <summary>
+            Variable type
+            </summary>
+        </member>
+    </members>
+</doc>

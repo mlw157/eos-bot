@@ -39,7 +39,7 @@ namespace eos_bot
                 .BuildServiceProvider();
                 
 
-            string token = ""; //put your token here
+            string token = "${{ secrets.TOKEN }}"; //put your token here
 
             _client.Log += _client_Log;
 

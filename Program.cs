@@ -39,7 +39,7 @@ namespace eos_bot
                 .BuildServiceProvider();
                 
 
-            string token = "ODE2NDI4OTY3MzU0NDMzNTg4.YD60ug.uuXfUaisjmmL1InD8exnhK8UOrE";
+            string token = ""; //put your token here
 
             _client.Log += _client_Log;
 

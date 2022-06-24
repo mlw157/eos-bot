@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -39,7 +39,7 @@ namespace eos_bot
                 .BuildServiceProvider();
                 
 
-            string token = ""; //put your discord bot token here
+            string token = "xxxxxx"; //put your discord bot token here
 
             _client.Log += _client_Log;
 

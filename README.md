@@ -1,3 +1,5 @@
+### UPDATE DISCLAIMER This is really old code that I programmed when I was learning. It has a bunch of spaghetti code, I know
+
 # eos-bot
 ### Discord bot developed in C# for the game ARK Survival Evolved, capable of showing and tracking the players in every official pvp server.
 
